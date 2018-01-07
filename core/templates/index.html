@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Qose</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+  <div class="jumbotron">
+    <h1>Análise de Qos e Qoe</h1>
+    <p>Olá caro usuário, seja bem-vindo ao nosso breve experimento.</p>
+    <p>Nesse experimento você irá assistir sessões de vídeos e em cada sessão você deverá avaliar o vídeo preferido dentre 2 possíveis.
+    <p>O experimento procura entender a relação entre QoS, QoE e Sistemas de Recomendação.</p>
+    <p>:)</p>
+  </div>
+  <div class='container'>
+    <h1><a href="{% url 'video_sessions:video_sessions' session_num = 1 ,video_num = 1%}" class="btn btn-primary btn-lg">Iniciar experimento</a></h1>
+  </div>
+</div>
+
+</body>
+</html>

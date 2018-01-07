@@ -1,0 +1,12 @@
+
+.video1_pos {
+  position: absolute;
+  top: 50%;
+  left:40%;
+  transform: translate(-50%,-60%);
+}
+
+.video2_pos {
+  position: element(#video1);
+
+}

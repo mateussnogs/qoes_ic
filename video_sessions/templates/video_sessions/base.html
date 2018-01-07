@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="en">
+<head>
+  <title>Qose</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="{% static 'css/video_session.css' %}">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+
+    <video class="video_pos" id="video" width="640" height="360" preload="auto" controls>
+      <source src="/media/{% block video_tag %}{%endblock%}" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <script type='text/javascript'>
+      var video_session = 1
+      var video_num = 1
+      document.getElementById('video').addEventListener('ended',myHandler,false);
+      function myHandler(e) {
+          window.location.href = "{% url 'video_sessions:video_sessions' session_num= video_session, video_num=video_num %}";
+      }
+    </script>
+
+</div>
+
+</div>
+
+</body>
+</html>
