@@ -6,5 +6,6 @@ from . import views
 app_name = 'video_sessions'
 
 urlpatterns = [
-    re_path(r'^video_sessions/(?P<video_session>[0-9]{2})/(?P<video_num>[0-9]{1})/$', views.video_sessions, name='video_sessions'),
+    re_path(r'^session(?P<session_num>\d)/video(?P<video_num>\d)/$', views.video_sessions, name='video_sessions'),
+    re_path(r'^feedback/session(?P<session_num>\d)/$', views.feedback, name='feedback'),
 ]
