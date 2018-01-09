@@ -14,7 +14,7 @@
 
 <div class="container">
 
-  <h1>Feedback da sessão {{session_num}}</h1>
+  <h1>Feedback da sessão {{session_num|add:"-1"}}</h1>
   <form method="POST">{% csrf_token %}
       {{ form.as_p }}
       <button type="submit" class="save btn btn-default">Save</button>

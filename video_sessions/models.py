@@ -4,10 +4,10 @@ from django.utils import timezone
 
 
 class Feedback(models.Model):
-    author = models.CharField(max_length=200)
+    nome = models.CharField(max_length=200)
     num_sessao = models.IntegerField()
     num_video_preferido = models.IntegerField()
-    text = models.TextField()
+    justificativa = models.TextField()
     created_date = models.DateTimeField(
             default=timezone.now)
     published_date = models.DateTimeField(
@@ -18,4 +18,4 @@ class Feedback(models.Model):
         self.save()
 
     def __str__(self):
-        return self.text
+        return self.nome

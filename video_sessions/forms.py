@@ -7,4 +7,4 @@ class FeedbackForm(forms.ModelForm):
 
     class Meta:
         model = Feedback
-        fields = ('author', 'num_video_preferido', 'text')
+        fields = ('nome', 'num_video_preferido', 'justificativa')

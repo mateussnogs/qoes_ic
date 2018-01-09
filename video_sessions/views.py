@@ -12,19 +12,29 @@ def video_sessions(request, session_num, video_num):
         'video_num_view': video_num,
         'video_path': ''
     }
-
-    if context['video_num_view'] == '2':
+    if context['video_num_view'] == '3':
         context['session_num_view'] = str(int(context['session_num_view']) + 1)
-        context['video_num_view'] = 0
+        context['video_num_view'] = 1
         return HttpResponseRedirect(reverse('video_sessions:feedback', kwargs={'session_num':context['session_num_view']}))
+
+#    if context['video_num_view'] == '2':
+#        context['session_num_view'] = str(int(context['session_num_view']) + 1)
+#        context['video_num_view'] = 0
+#        return HttpResponseRedirect(reverse('video_sessions:feedback', kwargs={'session_num':context['session_num_view']}))
 
     #decidindo qual path de video retornar
     if session_num == '1':
         if video_num == '1':
-            context['video_path'] = "The Smashing Pumpkins - Tonight, Tonight-NOG3eus4ZSo.mp4"
+            context['video_path'] = "brasil_perde_alemanha_sliced.mp4"
         elif video_num == '2':
-            context['video_path'] = "Sublime - Santeria-AEYN5w4T_aM.mp4"
-
+            context['video_path'] = "brasil_ganha_alemanha_sliced_rebuffs.mp4"
+    elif session_num == '2':
+        if video_num == '1':
+            context['video_path'] = "porta_dos_fnds_rebuffs.mp4"
+        elif video_num == '2':
+            context['video_path'] = "parafernalha_sliced.mp4"
+    else:
+        return render(request, 'video_sessions/final.html')
     return render(request, 'video_sessions/video_session.html', context)
 
 def feedback(request, session_num):
@@ -32,10 +42,10 @@ def feedback(request, session_num):
         form = FeedbackForm(request.POST)
         if form.is_valid():
             feed = form.save(commit=False)
-            feed.author = form.cleaned_data.get('author')
-            feed.num_sessao = session_num
+            feed.nome = form.cleaned_data.get('nome')
+            feed.num_sessao = str(int(session_num) - 1)
             feed.num_video_preferido = form.cleaned_data.get('num_video_preferido')
-            feed.text = form.cleaned_data.get('text')
+            feed.justificativa = form.cleaned_data.get('justificativa')
             feed.published_date = timezone.now()
             feed.save()
             return redirect('video_sessions:video_sessions', session_num = session_num, video_num = 1 )

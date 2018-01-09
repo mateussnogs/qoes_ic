@@ -6,8 +6,8 @@ from .models import Feedback
 
 class FeedbackAdmin(admin.ModelAdmin):
 
-    list_display = ['author', 'num_sessao', 'num_video_preferido', 'created_date', 'text']
-    search_fields = ['text', 'author', 'num_sessao']
+    list_display = ['nome', 'num_sessao', 'num_video_preferido', 'created_date', 'justificativa']
+    search_fields = ['justificativa', 'nome', 'num_sessao']
     list_filter = ['created_date']
 
 
