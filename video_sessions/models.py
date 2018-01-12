@@ -4,7 +4,9 @@ from django.utils import timezone
 
 
 class Feedback(models.Model):
-    nome = models.CharField(max_length=200)
+    incomodo = models.IntegerField()
+    interesse1 = models.IntegerField()
+    interesse2 = models.IntegerField()
     num_sessao = models.IntegerField()
     num_video_preferido = models.IntegerField()
     justificativa = models.TextField()
@@ -18,4 +20,4 @@ class Feedback(models.Model):
         self.save()
 
     def __str__(self):
-        return self.nome
+        return str(self.num_video_preferido)
