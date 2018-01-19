@@ -26,7 +26,7 @@ SECRET_KEY = 'q!o06p4wmah_cxp8e)$lz@!0)c&f-nyt$ix2-!axnv+c)&(ozt'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["mateussnogs.pythonanywhere.com"]
 
 
 # Application definition
@@ -127,6 +127,6 @@ STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
 
 STATIC_URL = '/static/'
 
-MEDIA_ROOT = '/home/mateus/qoes_ic/media/'
+MEDIA_ROOT = '/home/mateussnogs/qoes_ic/media/'
 
 MEDIA_URL = '/media/'
