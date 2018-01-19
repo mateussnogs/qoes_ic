@@ -38,6 +38,11 @@ def video_sessions(request, session_num, video_num):
             context['video_path'] = "skol.mp4"
         elif video_num == '2':
             context['video_path'] = "Piratas do Caribe_sliced_rebuffs.mp4"
+    elif session_num == '4':
+        if video_num == '1':
+            context['video_path'] = "pandas_sliced_rebuffs.mp4"
+        elif video_num == '2':
+            context['video_path'] = "zen_music_diving_sea_sliced.mp4"
 
     else:
         return render(request, 'video_sessions/final.html')
