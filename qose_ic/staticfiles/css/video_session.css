@@ -2,6 +2,10 @@
 .video_pos {
   position: absolute;
   top: 50%;
-  left:40%;
+  left:50%;
   transform: translate(-50%,-60%);
+}
+
+body {
+  background: url("/static/images/background.jpg")
 }

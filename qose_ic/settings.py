@@ -127,6 +127,6 @@ STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
 
 STATIC_URL = '/static/'
 
-MEDIA_ROOT = '/home/mateussnogs/qoes_ic/media/'
+MEDIA_ROOT = '/home/mateus/qoes_ic/media/'
 
 MEDIA_URL = '/media/'
