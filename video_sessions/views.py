@@ -116,8 +116,10 @@ def feedback(request, session_num):
                 return redirect('video_sessions:video_sessions', session_num = session_num, video_num = 1, session_announced=0)
     else:
         if session_num == get_last_session():
-
-            form = StressForm();
+            if "email" in request.session:
+                form = StressForm(initial={'email':request.session['email']})
+            else:
+                form = StressForm();
         else:
             if "email" in request.session:
                 form = FeedbackForm(initial={'email':request.session['email']})
