@@ -13,9 +13,21 @@ class Feedback(models.Model):
                                        MaxValueValidator(10)])
     num_sessao = models.IntegerField(validators=[MinValueValidator(1),
                                        MaxValueValidator(10)])
+    FIRST = 1
+    SECOND = 2
+    VIDEO_CHOICES = (
+        (FIRST, 'Primeiro'),
+        (SECOND, 'Segundo'),
+    )
     num_video_preferido = models.IntegerField(validators=[MinValueValidator(1),
-                                       MaxValueValidator(2)])
+                                       MaxValueValidator(2)], choices=VIDEO_CHOICES)
+
     justificativa = models.TextField()
+
+    comment = models.TextField(default="")
+
+    email = models.CharField(max_length=40, default="")
+
     created_date = models.DateTimeField(
             default=timezone.now)
     published_date = models.DateTimeField(

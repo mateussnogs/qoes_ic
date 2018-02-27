@@ -6,7 +6,7 @@ from django.http import HttpResponseRedirect
 from django.utils import timezone
 # Create your views here.
 
-def video_sessions(request, session_num, video_num):
+def video_sessions(request, session_num, video_num, session_announced):
     context = {
         'session_num_view': session_num,
         'video_num_view': video_num,
@@ -17,10 +17,9 @@ def video_sessions(request, session_num, video_num):
         context['video_num_view'] = 1
         return HttpResponseRedirect(reverse('video_sessions:feedback', kwargs={'session_num':context['session_num_view']}))
 
-#    if context['video_num_view'] == '2':
-#        context['session_num_view'] = str(int(context['session_num_view']) + 1)
-#        context['video_num_view'] = 0
-#        return HttpResponseRedirect(reverse('video_sessions:feedback', kwargs={'session_num':context['session_num_view']}))
+    if session_announced == '0':
+        print("wtfraifadiofasio")
+        return HttpResponseRedirect(reverse('video_sessions:session_introd', kwargs={'session_num':context['session_num_view']}))
 
     #decidindo qual path de video retornar
     if session_num == '1':
@@ -66,6 +65,13 @@ def video_sessions(request, session_num, video_num):
         return render(request, 'video_sessions/final.html')
     return render(request, 'video_sessions/video_session.html', context)
 
+def session_introd(request, session_num):
+    context = {
+        'session_num_view':session_num,
+    }
+    print(context['session_num_view'])
+    return render(request, 'video_sessions/session_introd.html', context)
+
 def feedback(request, session_num):
     if request.method == "POST":
         form = FeedbackForm(request.POST)
@@ -75,9 +81,11 @@ def feedback(request, session_num):
             feed.num_sessao = str(int(session_num) - 1)
             feed.num_video_preferido = form.cleaned_data.get('num_video_preferido')
             feed.justificativa = form.cleaned_data.get('justificativa')
+            feed.comment = form.cleaned_data.get('comment')
+            feed.email = form.cleaned_data.get('email')
             feed.published_date = timezone.now()
             feed.save()
-            return redirect('video_sessions:video_sessions', session_num = session_num, video_num = 1 )
+            return redirect('video_sessions:video_sessions', session_num = session_num, video_num = 1, session_announced=0)
     else:
         form = FeedbackForm()
     return render(request, 'video_sessions/form_feedback.html', {'form': form, 'session_num': session_num})

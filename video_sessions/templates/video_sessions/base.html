@@ -22,7 +22,7 @@
     <script type='text/javascript'>
       document.getElementById('video').addEventListener('ended', myHandler, false);
       function myHandler(e) {
-          window.location.href = "{% url 'video_sessions:video_sessions' session_num=session_num_view video_num=video_num_view|add:"1" %}";
+          window.location.href = "{% url 'video_sessions:video_sessions' session_num=session_num_view video_num=video_num_view|add:"1" session_announced=1%}";
       }
     </script>
 

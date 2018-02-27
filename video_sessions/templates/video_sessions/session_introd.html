@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Análise experimental de vídeos</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+  <div class="jumbotron">
+    {% if session_num_view == '1' %}
+      <p> Dois jogos clássicos entre Brasil e Alemanha serão apresentados. Controle as emoções. </p>
+
+
+    {% elif session_num_view == '2' %}
+      <p> Agora vejamos dois vídeos de comédia. Um vídeo do canal Porta dos Fundos, e outro do Parafernalha. </p>
+      <p> Julgue com o seu senso de humor :) </p>
+
+    {%elif session_num_view == '3' %}
+      <p> Uma propaganda ou um trailer? Por qual dessas opções você teria mais tolerância? </p>
+      <p> Como os distúrbios de qualidade no segundo vídeo afetaram sua decisão? </p>
+      <p> Conta pra gente após os vídeos! Sua opinião é de grande importância! </p>
+
+    {%elif session_num_view == '4' %}
+      <p> Vídeos sobre pandas e peixes, qual você prefere? Tem certeza? </p>
+      <p> Assista e descubra! </p>
+
+
+    {%elif session_num_view == '5' %}
+      <p> Comparando esportes radicais, quanto mais radical melhor? </p>
+      <p> Confira dando play! </p>
+
+    {%elif session_num_view == '6' %}
+      <h3> O experimento está perto do fim. Muito obrigado pelos seus feedbacks. Mostraremos mais 2 sessões. Lembre-se que você está contribuindo para a ciência!</h3>
+      <br></br><br></br>
+      <h4> O mundo animal pode ser fascinante, não é mesmo? Qual desses dois vídeos prende mais a sua atenção? </h4>
+
+    {%elif session_num_view == '7' %}
+      <h3> </h3>
+      <br></br><br></br>
+      <h4> Falando em ciência, o que te interessa mais, um documentário sobre buracos negros ou uma aula de física? </h4>
+      <h4> Compartilhe sua resposta! </h4>
+      
+    {% endif %}
+  </div>
+  <div class='container'>
+    <h1><a href="{% url 'video_sessions:video_sessions' session_num=session_num_view video_num=1 session_announced=1 %}" class="btn btn-primary btn-lg">Play</a></h1>
+  </div>
+</div>
+
+</body>
+</html>
