@@ -65,7 +65,7 @@ def video_sessions(request, session_num, video_num, session_announced):
         if video_num == '1':
             context['video_path'] = "usain_sliced_hd.mp4"
         elif video_num == '2':
-            context['video_path'] = "usain_rebuffs.mp4"
+            context['video_path'] = "usain_disturbed.mp4"
     else:
         return render(request, 'video_sessions/final.html')
     return render(request, 'video_sessions/video_session.html', context)
