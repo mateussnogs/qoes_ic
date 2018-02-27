@@ -93,7 +93,10 @@ def feedback(request, session_num):
                 feed.justificativa = form.cleaned_data.get('justificativa')
                 feed.rebuff_feedback = form.cleaned_data.get('rebuff_feedback')
                 feed.recommend_feedback = form.cleaned_data.get('recommend_feedback')
-                feed.email = form.cleaned_data.get('email')
+                if 'email' in request.session:
+                    feed.email = str(request.session['email'])
+                else:
+                    feed.email = form.cleaned_data.get('email')
                 feed.published_date = timezone.now()
                 feed.save()
                 return redirect('video_sessions:video_sessions', session_num = session_num, video_num = 1, session_announced = 1)
