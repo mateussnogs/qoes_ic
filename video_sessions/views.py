@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from .forms import FeedbackForm, StressForm
 from django.urls import reverse
+from django import forms
 from django.shortcuts import redirect
 from django.http import HttpResponseRedirect
 from django.utils import timezone
@@ -78,6 +79,10 @@ def session_introd(request, session_num):
     return render(request, 'video_sessions/session_introd.html', context)
 
 def feedback(request, session_num):
+    if 'email' not in request.session:
+        print("sem email porra")
+    else:
+        print(request.session['email'])
     if request.method == "POST":
         if session_num == get_last_session():
             form = StressForm(request.POST)
@@ -91,7 +96,7 @@ def feedback(request, session_num):
                 feed.email = form.cleaned_data.get('email')
                 feed.published_date = timezone.now()
                 feed.save()
-                return redirect('video_sessions:video_sessions', session_num = session_num, video_num = 1, session_announced=1)
+                return redirect('video_sessions:video_sessions', session_num = session_num, video_num = 1, session_announced = 1)
         else:
             form = FeedbackForm(request.POST)
             if form.is_valid():
@@ -100,15 +105,26 @@ def feedback(request, session_num):
                 feed.num_video_preferido = form.cleaned_data.get('num_video_preferido')
                 feed.justificativa = form.cleaned_data.get('justificativa')
                 feed.comment = form.cleaned_data.get('comment')
-                feed.email = form.cleaned_data.get('email')
+
+                if 'email' in request.session:
+                    feed.email = str(request.session['email'])
+                else:
+                    feed.email = form.cleaned_data.get('email')
+                    request.session['email'] = feed.email
                 feed.published_date = timezone.now()
                 feed.save()
                 return redirect('video_sessions:video_sessions', session_num = session_num, video_num = 1, session_announced=0)
     else:
         if session_num == get_last_session():
+
             form = StressForm();
         else:
-            form = FeedbackForm()
+            if "email" in request.session:
+                form = FeedbackForm(initial={'email':request.session['email']})
+            else:
+                form = FeedbackForm()
+
+
 
     context = {
         'form': form,
