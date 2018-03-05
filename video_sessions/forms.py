@@ -11,7 +11,7 @@ class FeedbackForm(forms.ModelForm):
         labels = {
             'num_video_preferido': _('Qual foi o seu vídeo preferido?'),
             'incomodo': _("Em uma escala de 1 a 10 qual foi o seu incômodo com as interrupções no vídeo de pior qualidade?"),
-            'interesse1': _("Em uma escala de 1 a 10 qual foi seu interesse pelo conteúdo do vídeo 1?"),
+            'interesse1': _("Em uma escala de 1 a 10 qual é o seu interesse pelo conteúdo/tópico do vídeo 1?"),
             'interesse2': _("E pelo vídeo 2?"),
             'justificativa': _("Por quê você preferiu esse vídeo?"),
             'comment': _("Comentários sobre a sessão"),
