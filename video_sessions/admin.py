@@ -6,7 +6,7 @@ from .models import Feedback, StressFeedback
 
 class FeedbackAdmin(admin.ModelAdmin):
 
-    list_display = ['num_sessao', 'num_video_preferido', 'created_date', 'justificativa']
+    list_display = ['num_sessao', 'num_video_preferido', 'interesse1', 'interesse2', 'created_date', 'justificativa']
     search_fields = ['justificativa', 'num_sessao']
     list_filter = ['created_date']
 
