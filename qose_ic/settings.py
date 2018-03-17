@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'video_sessions',
     #libs
     'widget_tweaks',
+    'multiselectfield',
 ]
 
 MIDDLEWARE = [

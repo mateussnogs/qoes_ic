@@ -6,7 +6,10 @@ from django.core.validators import MinValueValidator, MaxValueValidator
 
 class Feedback(models.Model):
     incomodo = models.IntegerField(validators=[MinValueValidator(0),
-                                       MaxValueValidator(10)])
+                                        MaxValueValidator(10)])
+
+    # incomodo = models.CharField(max_length=1, choices=STARS)
+
     interesse1 = models.IntegerField(validators=[MinValueValidator(0),
                                        MaxValueValidator(10)])
     interesse2 = models.IntegerField(validators=[MinValueValidator(0),
@@ -22,7 +25,7 @@ class Feedback(models.Model):
     num_video_preferido = models.IntegerField(validators=[MinValueValidator(1),
                                        MaxValueValidator(2)], choices=VIDEO_CHOICES)
 
-    justificativa = models.TextField()
+    justificativa = models.TextField(default="")
 
     comment = models.TextField(default="")
 
@@ -48,11 +51,11 @@ class StressFeedback(models.Model):
     num_sessao = models.IntegerField(validators=[MinValueValidator(1),
                                        MaxValueValidator(10)])
 
-    justificativa = models.TextField()
+    justificativa = models.TextField(default='', blank=True, null=True)
 
-    rebuff_feedback = models.TextField()
+    rebuff_feedback = models.TextField(default='', blank=True, null=True)
 
-    recommend_feedback = models.TextField()
+    recommend_feedback = models.TextField(default='', blank=True, null=True)
 
     email = models.CharField(max_length=40, default="")
 

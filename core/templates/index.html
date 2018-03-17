@@ -16,11 +16,11 @@
     <p>Olá! Seja bem-vindo ao nosso breve experimento.</p>
     <p>Nesse experimento você irá assistir sessões de vídeos, e em cada sessão você deverá avaliar o vídeo preferido dentre dois possíveis.</p>
     <p>Alguns distúrbios de qualidade podem ocorrer durante a reprodução de alguns vídeos, porém foram inseridos propositalmente. </p>
-    <p>O experimento irá durar em torno de 15 minutos.</p>
+    <p>O experimento irá durar em torno de 5 minutos.</p>
     <p>Esse experimento não funciona corretamente no navegador Safari, porém foi testado com êxito no Mozilla Firefox e Chrome.</p>
   </div>
   <div class='container'>
-    <h1><a href="{% url 'video_sessions:video_sessions' session_num=1 video_num=1 session_announced=0 %}" class="btn btn-primary btn-lg">Iniciar experimento</a></h1>
+    <h1><a href="{% url 'video_sessions:video_sessions' session_num=session_num_view video_num=1 session_announced=0 %}" class="btn btn-primary btn-lg">Iniciar experimento</a></h1>
   </div>
 </div>
 

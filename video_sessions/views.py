@@ -5,22 +5,36 @@ from django import forms
 from django.shortcuts import redirect
 from django.http import HttpResponseRedirect
 from django.utils import timezone
+import random
 # Create your views here.
 
 def video_sessions(request, session_num, video_num, session_announced):
+    if 'already_watched' not in request.session:
+        request.session['already_watched'] = []
+
+    if session_num not in request.session['already_watched']:
+        request.session['already_watched'].append(session_num)
+        request.session.modified = True
+
+    print("sessoes ja assistidas:")
+    print(request.session['already_watched'])
+
     context = {
         'session_num_view': session_num,
         'video_num_view': video_num,
         'video_path': ''
     }
-    if context['video_num_view'] == '3':
-        context['session_num_view'] = str(int(context['session_num_view']) + 1)
+    if context['video_num_view'] == '3': #  = se a sessão ja mostrou os dois videos anteriores:
+        #context['session_num_view'] = str(int(context['session_num_view']) + 1) # oldway em sequência e nao randomico
+        context['session_num_view'] = str(context['session_num_view'])
         context['video_num_view'] = 1
         return HttpResponseRedirect(reverse('video_sessions:feedback', kwargs={'session_num':context['session_num_view']}))
 
+
     if session_announced == '0':
-        print("wtfraifadiofasio")
         return HttpResponseRedirect(reverse('video_sessions:session_introd', kwargs={'session_num':context['session_num_view']}))
+
+
 
     #decidindo qual path de video retornar
     if session_num == '1':
@@ -75,36 +89,30 @@ def session_introd(request, session_num):
     context = {
         'session_num_view':session_num,
     }
-    print(context['session_num_view'])
     return render(request, 'video_sessions/session_introd.html', context)
 
 def feedback(request, session_num):
-    if 'email' not in request.session:
-        print("sem email porra")
-    else:
-        print(request.session['email'])
+    session_announced = 0
     if request.method == "POST":
-        if session_num == get_last_session():
+        if session_num == get_last_session(): #checar se o experimento terminou
             form = StressForm(request.POST)
             if form.is_valid():
                 feed = form.save(commit=False)
                 feed.estresse = form.cleaned_data.get('estresse')
-                feed.num_sessao = str(int(session_num) - 1)
-                feed.justificativa = form.cleaned_data.get('justificativa')
-                feed.rebuff_feedback = form.cleaned_data.get('rebuff_feedback')
-                feed.recommend_feedback = form.cleaned_data.get('recommend_feedback')
+                feed.num_sessao = str(session_num)
                 if 'email' in request.session:
                     feed.email = str(request.session['email'])
                 else:
                     feed.email = form.cleaned_data.get('email')
                 feed.published_date = timezone.now()
                 feed.save()
-                return redirect('video_sessions:video_sessions', session_num = session_num, video_num = 1, session_announced = 1)
+                next_session = get_next_random_session(request.session['already_watched'])
+                return redirect('video_sessions:video_sessions', session_num = next_session, video_num = 1, session_announced = 1)
         else:
             form = FeedbackForm(request.POST)
             if form.is_valid():
                 feed = form.save(commit=False)
-                feed.num_sessao = str(int(session_num) - 1)
+                feed.num_sessao = str(session_num)
                 feed.num_video_preferido = form.cleaned_data.get('num_video_preferido')
                 feed.justificativa = form.cleaned_data.get('justificativa')
                 feed.comment = form.cleaned_data.get('comment')
@@ -116,7 +124,16 @@ def feedback(request, session_num):
                     request.session['email'] = feed.email
                 feed.published_date = timezone.now()
                 feed.save()
-                return redirect('video_sessions:video_sessions', session_num = session_num, video_num = 1, session_announced=0)
+
+                if len(request.session['already_watched']) >= 4: # se o usuário já assistiu 4 sessoes, termina experimento!
+                    next_session = '9'
+                    session_announced = 1
+
+                else:
+                    #selecionando nova sessao aleatoriamente
+                    next_session = get_next_random_session(request.session['already_watched'])
+
+                return redirect('video_sessions:video_sessions', session_num = next_session, video_num = 1, session_announced=session_announced)
     else:
         if session_num == get_last_session():
             if "email" in request.session:
@@ -129,8 +146,6 @@ def feedback(request, session_num):
             else:
                 form = FeedbackForm()
 
-
-
     context = {
         'form': form,
         'session_num': session_num,
@@ -138,4 +153,10 @@ def feedback(request, session_num):
     return render(request, 'video_sessions/form_feedback.html', context)
 
 def get_last_session():
-    return str(8+1) #8 é a última sessão atualmente, e +1 pra cancelar uma gambiarra e chegar a 9
+    return str(8) #8 é a última sessão atualmente
+
+def get_next_random_session(already_watched_array):
+    next_session = str(random.randrange(1, 8)) # 1 até 7 incluso, pq o 8 é obrigatório
+    while next_session in already_watched_array:
+        next_session = str(random.randrange(1, 8))
+    return next_session
