@@ -107,7 +107,7 @@ def feedback(request, session_num):
                 feed.published_date = timezone.now()
                 feed.save()
                 next_session = get_next_random_session(request.session['already_watched'])
-                return redirect('video_sessions:video_sessions', session_num = next_session, video_num = 1, session_announced = 1)
+                return redirect('video_sessions:video_sessions', session_num = next_session, video_num = 1, session_announced = 0)
         else:
             form = FeedbackForm(request.POST)
             if form.is_valid():
