@@ -18,9 +18,11 @@ class Feedback(models.Model):
                                        MaxValueValidator(10)])
     FIRST = 1
     SECOND = 2
+    NONE = 0
     VIDEO_CHOICES = (
         (FIRST, 'Primeiro'),
         (SECOND, 'Segundo'),
+        (NONE, 'Nenhum'),
     )
     num_video_preferido = models.IntegerField(validators=[MinValueValidator(1),
                                        MaxValueValidator(2)], choices=VIDEO_CHOICES)
