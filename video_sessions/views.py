@@ -104,6 +104,7 @@ def feedback(request, session_num):
                     feed.email = str(request.session['email'])
                 else:
                     feed.email = form.cleaned_data.get('email')
+                    request.session['email'] = feed.email
                 feed.published_date = timezone.now()
                 feed.save()
                 next_session = get_next_random_session(request.session['already_watched'])

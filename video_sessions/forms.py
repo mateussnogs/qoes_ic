@@ -30,7 +30,7 @@ class FeedbackForm(forms.ModelForm):
             'justificativa': _("Por quê você preferiu esse vídeo?"),
             'incomodo': _("Em uma escala de 0 a 5 qual foi o seu incômodo com as interrupções no vídeo de pior qualidade?"),
             'comment': _(str_comentario_label),
-            'email': _("Seu e-mail: "),
+            'email': _(""),
         }
         widgets = {
           'comment': forms.Textarea(attrs={'rows':4, 'cols':15}),
@@ -44,6 +44,7 @@ class FeedbackForm(forms.ModelForm):
         super(FeedbackForm, self).__init__(*args, **kwargs)
         self.fields['justificativa'].required = False
         self.fields['comment'].required = False
+        self.fields['email'].widget = forms.HiddenInput()
 
 class StressForm(forms.ModelForm):
 
