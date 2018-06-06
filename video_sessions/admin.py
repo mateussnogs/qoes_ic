@@ -12,7 +12,7 @@ class FeedbackAdmin(admin.ModelAdmin):
 
 class StressFeedbackAdmin(admin.ModelAdmin):
 
-    list_display = ['num_sessao', 'estresse', 'justificativa', 'created_date']
+    list_display = ['num_sessao', 'estresse', 'justificativa', 'created_date', 'email']
     search_fields = ['justificativa', 'estresse']
     list_filter = ['created_date']
 
