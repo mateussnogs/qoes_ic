@@ -9,6 +9,7 @@ import random
 # Create your views here.
 
 def english_index(request):
+    request.session.clear()
     return render(request, 'video_sessions/english_index.html')
 
 
