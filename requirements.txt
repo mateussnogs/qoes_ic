@@ -1,0 +1,5 @@
+Django==2.0.1
+django-multiselectfield==0.1.8
+django-select-multiple-field==0.4.2
+django-widget-tweaks==1.4.1
+pytz==2017.3
