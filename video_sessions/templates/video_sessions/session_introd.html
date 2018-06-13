@@ -13,7 +13,11 @@
 <div class="container">
   <div class="jumbotron">
     {% if session_num_view == '1' %}
+      {% if en_view == False %}
       <p> Dois jogos clássicos entre Brasil e Alemanha serão apresentados. Controle as emoções. </p>
+      {% else %}
+      <p> Funny cats! How not to laugh? </p>
+      {% endif %}
 
 
     {% elif session_num_view == '2' %}
@@ -26,13 +30,21 @@
       <p> Conta pra gente após os vídeos! Sua opinião é de grande importância! </p>
 
     {%elif session_num_view == '4' %}
+      {%if en_view %}
+      <p> Funny pandas or relaxing fish? Are you sure? Play and findout </p>
+      {%else%}
       <p> Vídeos com pandas e outro com peixes, qual você prefere? Tem certeza? </p>
       <p> Assista e descubra! </p>
+      {%endif%}
 
 
     {%elif session_num_view == '5' %}
+      {%if en_view %}
+        <p>Comparing sports, the more radical the better? Press play and check it out!</p>
+      {% else %}
       <p> Comparando esportes radicais, quanto mais radical melhor? </p>
       <p> Confira dando play! </p>
+      {%endif%}
 
     {%elif session_num_view == '6' %}
       <h4> O mundo animal pode ser fascinante, não é mesmo? Qual desses dois vídeos prende mais a sua atenção? </h4>
@@ -43,13 +55,17 @@
       <h4> Compartilhe sua resposta! </h4>
 
     {%elif session_num_view == '8' %}
+      {%if en_view %}
+      <h3>Usain Bolt breaking the world record of 100m. Always exciting! Wait...</h3>
+      {% else %}
       <h3> Usain Bolt quebrando o recorde mundial dos 100m em duas versões. </h3>
+      {% endif %}
 
 
     {% endif %}
   </div>
   <div class='container'>
-    <h1><a href="{% url 'video_sessions:video_sessions' session_num=session_num_view video_num=1 session_announced=1 %}" class="btn btn-primary btn-lg">Play</a></h1>
+    <h1><a href="{% url 'video_sessions:video_sessions' session_num=session_num_view video_num=1 session_announced=1 english=en_view%}" class="btn btn-primary btn-lg">Play</a></h1>
   </div>
 </div>
 

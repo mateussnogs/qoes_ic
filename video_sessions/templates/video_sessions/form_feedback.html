@@ -16,7 +16,7 @@
 
 <div class="container">
 
-  <h2>Feedback da sessão</h2>
+  <h2>{%if english %} Session Feedback {%else%}Feedback da sessão{%endif%}</h2>
 
   <form method="POST" class="form-horizontal">{% csrf_token %}
     <fieldset>
@@ -36,7 +36,7 @@
       {% endfor %}
       <div class="form-group">
         <div class="col-md-9 col-md-offset-3">
-          <button type="submit" class="btn btn-primary"> Enviar </button>
+          <button type="submit" class="btn btn-primary"> {%if english%}Submit {%else%}Enviar{%endif%} </button>
         </div>
       </div>
 

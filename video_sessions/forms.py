@@ -18,14 +18,18 @@ class HorizontalRadioSelect(forms.RadioSelect):
 
 str_comentario_label = "Comentários sobre a sessão(Opcional). As falhas de qualidade foram muito perceptíveis? \
 O tempo dos vídeos foi muito curto para julgá-los? Houve entretenimento durante a sessão?"
+
+str_comentario_label_en="Comments about the session (optional): the streaming failures were very visible? \
+  The duration of the movies was too short to assess their quality? Was there entertainment during the sessions?"
+
 class FeedbackForm(forms.ModelForm):
 
     class Meta:
         model = Feedback
         fields = ('interesse1', 'interesse2', 'num_video_preferido', 'justificativa', 'incomodo', 'comment', 'email')
         labels = {
-            'num_video_preferido': _('Qual foi o seu vídeo preferido?'),
-            'interesse1': _("Em uma escala de 0 a 5 qual é o seu interesse pelo conteúdo/tópico do vídeo 1?"),
+            'num_video_preferido': _('Qual foi o seu vídeo preferido considerando as falhas de qualidade?'),
+            'interesse1': _("Em uma escala de 0 a 5 qual é o seu interesse pelo conteúdo do vídeo 1?"),
             'interesse2': _("E pelo vídeo 2?"),
             'justificativa': _("Por quê você preferiu esse vídeo?"),
             'incomodo': _("Em uma escala de 0 a 5 qual foi o seu incômodo com as interrupções no vídeo de pior qualidade?"),
@@ -46,6 +50,7 @@ class FeedbackForm(forms.ModelForm):
         self.fields['comment'].required = False
         self.fields['email'].widget = forms.HiddenInput()
 
+
 class StressForm(forms.ModelForm):
 
     class Meta:
@@ -54,4 +59,48 @@ class StressForm(forms.ModelForm):
         labels = {
             'estresse': _("Em uma escala de 1 a 10, qual foi o seu estresse com as falhas de qualidade do primeiro vídeo?"),
             'email': _("Seu e-mail: "),
+        }
+
+
+
+
+# ctrl-c ctrl-v para adaptando forms acima para ingles
+
+class FeedbackForm_en(forms.ModelForm):
+
+    class Meta:
+        model = Feedback
+        fields = ('interesse1', 'interesse2', 'num_video_preferido', 'justificativa', 'incomodo', 'comment', 'email')
+        labels = {
+            'num_video_preferido': _('What was your favorite movie considering the flaws?'),
+            'interesse1': _("In a scale from 0 to 5, what is your interest by the content of movie 1?"),
+            'interesse2': _("And by the content of movie 2?"),
+            'justificativa': _("Why did you prefer that movie?"),
+            'incomodo': _("In a scale from 0 to 5, how much did you feel impaired by the interruptions in the movie with lower streaming quality?"),
+            'comment': _(str_comentario_label_en),
+            'email': _(""),
+        }
+        widgets = {
+          'comment': forms.Textarea(attrs={'rows':4, 'cols':15}),
+          'justificativa': forms.Textarea(attrs={'rows':3, 'cols':15}),
+          'incomodo': HorizontalRadioSelect(choices=STARS),
+          'interesse1': HorizontalRadioSelect(choices=STARS),
+          'interesse2': HorizontalRadioSelect(choices=STARS),
+        }
+
+    def __init__(self, *args, **kwargs):
+        super(FeedbackForm_en, self).__init__(*args, **kwargs)
+        self.fields['justificativa'].required = False
+        self.fields['comment'].required = False
+        self.fields['email'].widget = forms.HiddenInput()
+
+
+class StressForm_en(forms.ModelForm):
+
+    class Meta:
+        model = StressFeedback
+        fields = ('estresse', 'email')
+        labels = {
+            'estresse': _("In a scale from 0 to 10, what was your stress level while watching the first movie, with breaks?"),
+            'email': _("Your email: "),
         }

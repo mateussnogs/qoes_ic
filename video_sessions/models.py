@@ -20,9 +20,9 @@ class Feedback(models.Model):
     SECOND = 2
     NONE = 0
     VIDEO_CHOICES = (
-        (FIRST, 'Primeiro'),
-        (SECOND, 'Segundo'),
-        (NONE, 'Nenhum'),
+        (FIRST, 'Primeiro/First'),
+        (SECOND, 'Segundo/Second'),
+        (NONE, 'Nenhum/None'),
     )
     num_video_preferido = models.IntegerField(validators=[MinValueValidator(1),
                                        MaxValueValidator(2)], choices=VIDEO_CHOICES)
@@ -32,6 +32,8 @@ class Feedback(models.Model):
     comment = models.TextField(default="")
 
     email = models.CharField(max_length=40, default="")
+
+    english = models.NullBooleanField(default=False)
 
     created_date = models.DateTimeField(
             default=timezone.now)
