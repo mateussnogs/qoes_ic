@@ -1,6 +1,6 @@
 from django import forms
 from django.utils.translation import gettext_lazy as _
-from .models import Feedback, StressFeedback
+from .models import Feedback, StressFeedback, Categories
 from django.utils.safestring import mark_safe
 
 STARS = (
@@ -28,17 +28,17 @@ class FeedbackForm(forms.ModelForm):
         model = Feedback
         fields = ('interesse1', 'interesse2', 'num_video_preferido', 'justificativa', 'incomodo', 'comment', 'email')
         labels = {
-            'num_video_preferido': _('Qual foi o seu vídeo preferido considerando as falhas de qualidade?'),
-            'interesse1': _("Em uma escala de 0 a 5 qual é o seu interesse pelo conteúdo do vídeo 1?"),
-            'interesse2': _("E pelo vídeo 2?"),
+            'num_video_preferido': _('Qual foi o seu vídeo preferido, considerando as falhas de qualidade?'),
+            'interesse1': _("Em uma escala de 0 a 5 qual é o seu interesse pelo conteúdo do vídeo 1(independentemente das falhas)?"),
+            'interesse2': _("E pelo do vídeo 2(independentemente das falhas)?"),
             'justificativa': _("Por quê você preferiu esse vídeo?"),
             'incomodo': _("Em uma escala de 0 a 5 qual foi o seu incômodo com as interrupções no vídeo de pior qualidade?"),
             'comment': _(str_comentario_label),
             'email': _(""),
         }
         widgets = {
-          'comment': forms.Textarea(attrs={'rows':4, 'cols':15}),
-          'justificativa': forms.Textarea(attrs={'rows':3, 'cols':15}),
+          'comment': forms.Textarea(attrs={'rows':2, 'cols':15}),
+          'justificativa': forms.Textarea(attrs={'rows':1, 'cols':15}),
           'incomodo': HorizontalRadioSelect(choices=STARS),
           'interesse1': HorizontalRadioSelect(choices=STARS),
           'interesse2': HorizontalRadioSelect(choices=STARS),
@@ -48,6 +48,7 @@ class FeedbackForm(forms.ModelForm):
         super(FeedbackForm, self).__init__(*args, **kwargs)
         self.fields['justificativa'].required = False
         self.fields['comment'].required = False
+        self.fields['email'].required = False
         self.fields['email'].widget = forms.HiddenInput()
 
 
@@ -58,8 +59,15 @@ class StressForm(forms.ModelForm):
         fields = ('estresse', 'email')
         labels = {
             'estresse': _("Em uma escala de 1 a 10, qual foi o seu estresse com as falhas de qualidade do primeiro vídeo?"),
-            'email': _("Seu e-mail: "),
+            'email': _("Seu e-mail(opcional): "),
         }
+        widgets = {
+            'estresse':forms.NumberInput(attrs={'min': 0, 'max': 10}),
+        }
+
+    def __init__(self, *args, **kwargs):
+        super(StressForm, self).__init__(*args, **kwargs)
+        self.fields['email'].required = False
 
 
 
@@ -81,8 +89,8 @@ class FeedbackForm_en(forms.ModelForm):
             'email': _(""),
         }
         widgets = {
-          'comment': forms.Textarea(attrs={'rows':4, 'cols':15}),
-          'justificativa': forms.Textarea(attrs={'rows':3, 'cols':15}),
+          'comment': forms.Textarea(attrs={'rows':2, 'cols':15}),
+          'justificativa': forms.Textarea(attrs={'rows':1, 'cols':15}),
           'incomodo': HorizontalRadioSelect(choices=STARS),
           'interesse1': HorizontalRadioSelect(choices=STARS),
           'interesse2': HorizontalRadioSelect(choices=STARS),
@@ -92,6 +100,7 @@ class FeedbackForm_en(forms.ModelForm):
         super(FeedbackForm_en, self).__init__(*args, **kwargs)
         self.fields['justificativa'].required = False
         self.fields['comment'].required = False
+        self.fields['email'].required = False
         self.fields['email'].widget = forms.HiddenInput()
 
 
@@ -102,5 +111,50 @@ class StressForm_en(forms.ModelForm):
         fields = ('estresse', 'email')
         labels = {
             'estresse': _("In a scale from 0 to 10, what was your stress level while watching the first movie, with breaks?"),
-            'email': _("Your email: "),
+            'email': _("Your email(optional): "),
+        }
+        widgets = {
+            'estresse':forms.NumberInput(attrs={'min': 0, 'max': 10}),
+        }
+
+    def __init__(self, *args, **kwargs):
+        super(StressForm_en, self).__init__(*args, **kwargs)
+        self.fields['email'].required = False
+
+
+
+class CategoriesForm(forms.ModelForm):
+
+    class Meta:
+        model = Categories
+        fields = ('esporte', 'comedia', 'musica', 'documentario')
+        labels = {
+            'esporte': _("Esportes:"),
+            'comedia': _("Comédia: "),
+            'musica': _("Música: "),
+            'documentario': _("Documentários: ")
+        }
+        widgets= {
+            'esporte': forms.NumberInput(attrs={'min': 1, 'max': 4}),
+            'comedia': forms.NumberInput(attrs={'min': 1, 'max': 4}),
+            'musica': forms.NumberInput(attrs={'min': 1, 'max': 4}),
+            'documentario': forms.NumberInput(attrs={'min': 1, 'max': 4}),
+        }
+
+class CategoriesForm_en(forms.ModelForm):
+
+    class Meta:
+        model = Categories
+        fields = ('esporte', 'comedia', 'musica', 'documentario')
+        labels = {
+            'esporte': _("Sports:"),
+            'comedia': _("Comedy: "),
+            'musica': _("Music: "),
+            'documentario': _("Documentaries: ")
+        }
+        widgets= {
+            'esporte': forms.NumberInput(attrs={'min': 1, 'max': 4}),
+            'comedia': forms.NumberInput(attrs={'min': 1, 'max': 4}),
+            'musica': forms.NumberInput(attrs={'min': 1, 'max': 4}),
+            'documentario': forms.NumberInput(attrs={'min': 1, 'max': 4}),
         }

@@ -13,7 +13,7 @@
 <body>
 
 <div class="container">
-    <div align="center"><h2>Vídeo {{video_num_view}}</h2></div>
+    <div align="center"><h2>Video {{video_num_view}}</h2></div>
     <video class="video_pos" id="video" width="640" height="360" preload="auto" autoplay>
       <source src="/media/{{video_path}}" type="video/mp4">
         Your browser does not support the video tag.
@@ -22,7 +22,7 @@
     <script type='text/javascript'>
       document.getElementById('video').addEventListener('ended', myHandler, false);
       function myHandler(e) {
-          window.location.href = "{% url 'video_sessions:video_sessions' session_num=session_num_view video_num=video_num_view|add:"1" session_announced=1 english=en_view%}";
+          window.location.href = "{% url 'video_sessions:video_sessions' session_num=session_num_view video_num=video_num_view|add:"1" session_announced=1 english=english_str%}";
       }
     </script>
 

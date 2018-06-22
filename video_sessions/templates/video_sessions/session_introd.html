@@ -13,7 +13,7 @@
 <div class="container">
   <div class="jumbotron">
     {% if session_num_view == '1' %}
-      {% if en_view == False %}
+      {% if en_view_bool == False %}
       <p> Dois jogos clássicos entre Brasil e Alemanha serão apresentados. Controle as emoções. </p>
       {% else %}
       <p> Funny cats! How not to laugh? </p>
@@ -30,7 +30,7 @@
       <p> Conta pra gente após os vídeos! Sua opinião é de grande importância! </p>
 
     {%elif session_num_view == '4' %}
-      {%if en_view %}
+      {%if en_view_bool %}
       <p> Funny pandas or relaxing fish? Are you sure? Play and findout </p>
       {%else%}
       <p> Vídeos com pandas e outro com peixes, qual você prefere? Tem certeza? </p>
@@ -39,7 +39,7 @@
 
 
     {%elif session_num_view == '5' %}
-      {%if en_view %}
+      {%if en_view_bool %}
         <p>Comparing sports, the more radical the better? Press play and check it out!</p>
       {% else %}
       <p> Comparando esportes radicais, quanto mais radical melhor? </p>
@@ -54,8 +54,15 @@
       <h4> Ah! Falando em ciência, o que te interessa mais, um documentário sobre buracos negros ou uma aula de física? </h4>
       <h4> Compartilhe sua resposta! </h4>
 
-    {%elif session_num_view == '8' %}
-      {%if en_view %}
+      {%elif session_num_view == '8' %}
+        {%if en_view_bool %}
+        <h3>Press play and enjoy some seconds of classical music. Maybe more in one than the other.</h3>
+        {% else %}
+        <h3> Aperte play e aproveite alguns segundos de música clássica! Talvez mais em um dos vídeos.</h3>
+        {% endif %}
+
+    {%elif session_num_view == '9' %}
+      {%if en_view_bool %}
       <h3>Usain Bolt breaking the world record of 100m. Always exciting! Wait...</h3>
       {% else %}
       <h3> Usain Bolt quebrando o recorde mundial dos 100m em duas versões. </h3>
@@ -65,7 +72,7 @@
     {% endif %}
   </div>
   <div class='container'>
-    <h1><a href="{% url 'video_sessions:video_sessions' session_num=session_num_view video_num=1 session_announced=1 english=en_view%}" class="btn btn-primary btn-lg">Play</a></h1>
+    <h1><a href="{% url 'video_sessions:video_sessions' session_num=session_num_view video_num=1 session_announced=1 english=english_str%}" class="btn btn-primary btn-lg">Play</a></h1>
   </div>
 </div>
 

@@ -40,6 +40,10 @@ class Feedback(models.Model):
     published_date = models.DateTimeField(
             blank=True, null=True)
 
+    session_id = models.CharField (
+        'Chave sessão', max_length=40, default=""
+    )
+
     def publish(self):
         self.published_date = timezone.now()
         self.save()
@@ -63,10 +67,16 @@ class StressFeedback(models.Model):
 
     email = models.CharField(max_length=40, default="")
 
+    english = models.NullBooleanField(default=False)
+
     created_date = models.DateTimeField(
             default=timezone.now)
     published_date = models.DateTimeField(
             blank=True, null=True)
+
+    session_id = models.CharField (
+        'Chave sessão', max_length=40, default=""
+    )
 
     def publish(self):
         self.published_date = timezone.now()
@@ -74,3 +84,25 @@ class StressFeedback(models.Model):
 
     def __str__(self):
         return str(self.estresse)
+
+class Categories(models.Model):
+    comedia = models.IntegerField(validators=[MinValueValidator(1),
+                                       MaxValueValidator(4)])
+    esporte = models.IntegerField(validators=[MinValueValidator(1),
+                                       MaxValueValidator(4)])
+    documentario = models.IntegerField(validators=[MinValueValidator(1),
+                                       MaxValueValidator(4)])
+    musica = models.IntegerField(validators=[MinValueValidator(1),
+                                       MaxValueValidator(4)])
+
+    english = models.NullBooleanField(default=False)
+
+    session_id = models.CharField (
+        'Chave sessão', max_length=40, default=""
+    )
+
+    created_date = models.DateTimeField(
+            default=timezone.now)
+
+    def __str__(self):
+        return "Categoria"

@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Feedback, StressFeedback
+from .models import Feedback, StressFeedback, Categories
 # Register your models here.
 
 
@@ -16,5 +16,9 @@ class StressFeedbackAdmin(admin.ModelAdmin):
     search_fields = ['justificativa', 'estresse']
     list_filter = ['created_date']
 
+class CategoriesAdmin(admin.ModelAdmin):
+    list_display = ['comedia', 'esporte', 'documentario', 'musica', 'english', 'session_id', 'created_date']
+
 admin.site.register(Feedback, FeedbackAdmin)
 admin.site.register(StressFeedback, StressFeedbackAdmin)
+admin.site.register(Categories, CategoriesAdmin)
