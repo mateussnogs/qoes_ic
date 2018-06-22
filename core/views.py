@@ -22,6 +22,7 @@ def categories(request, english=''):
     en = False
     if english == 'en':
         en = True
+
     if request.method == "POST":
         if en:
             form = CategoriesForm_en(request.POST)
@@ -46,5 +47,6 @@ def categories(request, english=''):
 
     context = {
         'form':form,
+        'en_view_bool': en,
     }
     return render(request, 'categories.html',context)

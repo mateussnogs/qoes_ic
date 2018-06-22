@@ -16,9 +16,9 @@
 
 <div class="container">
 
-  <h2>{%if english %} Favorite categories {%else%}Categorias preferidas{%endif%}</h2>
+  <h2>{%if en_view_bool %} Favorite categories {%else%}Categorias preferidas{%endif%}</h2>
 
-  <h3> Por favor, ordene as categorias de acordo com suas preferências com números de 1 a 4 </h3>
+  <h3> {%if en_view_bool %} Please, order categories according to your preferences {%else%}Por favor, ordene as categorias de acordo com suas preferências com números de 1 a 4 {%endif%}</h3>
 
   <form method="POST" class="form-horizontal">{% csrf_token %}
     <fieldset>
