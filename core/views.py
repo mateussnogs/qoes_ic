@@ -38,7 +38,7 @@ def categories(request, english=''):
                 feed.english = True
             feed.session_id = request.session.session_key
             feed.save()
-            return redirect('video_sessions:video_sessions', session_num = 9, video_num = 1, session_announced = 0, english=english)
+            return redirect('video_sessions:video_sessions', session_num = 8, video_num = 1, session_announced = 0, english=english)
     else:
         if en:
             form = CategoriesForm_en()
