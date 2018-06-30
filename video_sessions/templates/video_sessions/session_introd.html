@@ -22,23 +22,25 @@
 
     {% elif session_num_view == '2' %}
       <p> Dois vídeos de comédia. Um vídeo do canal Porta dos Fundos, e outro do Parafernalha. </p>
-      <p> Julgue com o seu senso de humor :) </p>
+      <p> É bom poder rir com vídeos de comédia, mas será que seria menos engraçado com algumas falhas de qualidade de vídeo? </p>
+      <p> Apesar de algumas curtas interrupções em um dos vídeos, esperamos que você se divirta e contribua com sua resposta! </p>
 
-    {%elif session_num_view == '3' %}
+    {% comment suspensao da sessao %}{%elif session_num_view == '3' %}
       <p> Uma propaganda ou um trailer? Por qual dessas opções você teria mais tolerância? </p>
       <p> Como os distúrbios de qualidade no segundo vídeo afetaram sua decisão? </p>
       <p> Conta pra gente após os vídeos! Sua opinião é de grande importância! </p>
+    {% endcomment %}
 
-    {%elif session_num_view == '4' %}
+    {%elif session_num_view == '3' %}
       {%if en_view_bool %}
       <p> Funny pandas or relaxing fish? Are you sure? Play and findout </p>
       {%else%}
-      <p> Vídeos com pandas e outro com peixes, qual você prefere? Tem certeza? </p>
-      <p> Assista e descubra! </p>
+      <p> Pandas costumam ser mais divertidos que peixes. E se o vídeo de peixes tivesse melhor qualidade, ainda seria mais legal ver pandas? </p>
+      <p> Assista e descubra! É rápido e sua resposta é importante! </p>
       {%endif%}
 
 
-    {%elif session_num_view == '5' %}
+    {%elif session_num_view == '4' %}
       {%if en_view_bool %}
         <p>Comparing sports, the more radical the better? Press play and check it out!</p>
       {% else %}
@@ -46,26 +48,29 @@
       <p> Confira dando play! </p>
       {%endif%}
 
+    {%elif session_num_view == '5' %}
+      <h4> O mundo animal pode ser fascinante, não é mesmo? Vemos um comportamento mais interessante que o outro. </h4>
+      <h4> Mas e se o mais interessante tivesse algumas pequenas falhas, sua preferência entre os vídeos mudaria?</h4>
+
     {%elif session_num_view == '6' %}
-      <h4> O mundo animal pode ser fascinante, não é mesmo? Qual desses dois vídeos prende mais a sua atenção? </h4>
+      <h4> A seguir, vídeos científicos bem curtos. Qual o mais interessante? E qual foi o preferido considerando as falhas?</h4>
+      <h4> Compartilhe sua resposta após os vídeos! </h4>
 
-    {%elif session_num_view == '7' %}
-      <h4> Assistindo os vídeos e dando os feedbacks você está colaborando com a ciência. </h4>
-      <h4> Ah! Falando em ciência, o que te interessa mais, um documentário sobre buracos negros ou uma aula de física? </h4>
-      <h4> Compartilhe sua resposta! </h4>
-
-      {%elif session_num_view == '8' %}
+      {%elif session_num_view == '7' %}
         {%if en_view_bool %}
         <h3>Press play and enjoy some seconds of classical music. Maybe more in one than the other.</h3>
         {% else %}
-        <h3> Aperte play e aproveite alguns segundos de música clássica! Talvez mais em um dos vídeos.</h3>
+        <h3> Aperte play e aproveite alguns segundos de música clássica! Talvez um pouco mais em um dos vídeos...</h3>
         {% endif %}
 
-    {%elif session_num_view == '9' %}
+    {%elif session_num_view == '8' %}
       {%if en_view_bool %}
       <h3>Usain Bolt breaking the world record of 100m. Always exciting! Wait...</h3>
       {% else %}
-      <h3> Usain Bolt quebrando o recorde mundial dos 100m em duas versões. </h3>
+      <h3> Usain Bolt quebrando o recorde mundial dos 100m em duas versões. Queremos estimar sua sensibilidade numericamente quanto a falhas de qualidade que um vídeo pode apresentar. </h3>
+      <h3> Algumas pessoas tem mais, e outras não se importam tanto se a qualidade de transmissão de um vídeo não estiver tão boa.</h3>
+      <h3> Qual o seu perfil? Assista os próximos curtos vídeos e conta pra gente! </h3>
+      <h3> Vai ser rápido. Corre e aperta o play. <h3>
       {% endif %}
 
 
