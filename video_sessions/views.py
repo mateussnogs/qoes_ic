@@ -156,21 +156,21 @@ def feedback(request, session_num, english=''):
     return render(request, 'video_sessions/form_feedback.html', context)
 
 def get_last_session():
-    return str(9) #8 é a última sessão atualmente
+    return str(8) #8 é a última sessão atualmente
 
 def get_next_random_session(already_watched_array):
-    next_session = str(random.randrange(1, 9)) # 1 até 7 incluso, pq o 8 é obrigatório
+    next_session = str(random.randrange(1, 8)) # 1 até 7 incluso, pq o 8 é obrigatório
     while next_session in already_watched_array:
-        next_session = str(random.randrange(1, 9))
+        next_session = str(random.randrange(1, 8))
     return next_session
 
 def get_next_session_en(session_num):
-    if session_num == str(9):
+    if session_num == str(8):
         return str(1)
     elif session_num == str(1):
-        return str(8)
-    elif session_num == str(8):
-        return str(5)
+        return str(7)
+    elif session_num == str(7):
+        return str(4)
     else:
         return str(666) # termina
 
@@ -195,45 +195,40 @@ def get_video_path(session_num, video_num):
             video_path = "brasil_ganha_alemanha_sliced_rebuffs.mp4"
     elif session_num == '2':
         if video_num == '1':
-            video_path = "porta_dos_fnds_rebuffs.mp4"
+            video_path = "sotaques.mp4"
         elif video_num == '2':
-            video_path = "parafernalha_sliced.mp4"
+            video_path = "poser.mp4"
     elif session_num == '3':
-        if video_num == '1':
-            video_path = "skol.mp4"
-        elif video_num == '2':
-            video_path = "Piratas do Caribe_sliced_rebuffs.mp4"
-    elif session_num == '4':
         if video_num == '1':
             video_path = "pandas_sliced_rebuffs.mp4"
         elif video_num == '2':
             video_path = "zen_music_diving_sea_sliced.mp4"
 
-    elif session_num == '5':
+    elif session_num == '4':
         if video_num == '1':
             video_path = "radicais_composto_rebuffs.mp4"
         elif video_num == '2':
             video_path = "slack_sliced.mp4"
 
-    elif session_num == '6':
+    elif session_num == '5':
         if video_num == '1':
             video_path = "formigas.mp4"
         elif video_num == '2':
             video_path = "onca_composto_rebuffs.mp4"
 
-    elif session_num == '7':
+    elif session_num == '6':
         if video_num == '1':
             video_path = "buracos_negros_rebuffs.mp4"
         elif video_num == '2':
-            video_path = "newton.mp4"
+            video_path = "sistema_solar_telecurso_sliced.mp4"
 
-    elif session_num == '8':
+    elif session_num == '7':
         if video_num == '1':
             video_path = "vivaldi_bad_qos.mp4"
         elif video_num == '2':
             video_path = "Vivaldi_g_qos.mp4"
 
-    elif session_num == '9':
+    elif session_num == '8':
         if video_num == '1':
             video_path = "usain_disturbed.mp4"
         elif video_num == '2':

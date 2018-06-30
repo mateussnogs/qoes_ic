@@ -18,7 +18,7 @@
 
   <h2>{%if en_view_bool %} Favorite categories {%else%}Categorias preferidas{%endif%}</h2>
 
-  <h3> {%if en_view_bool %} Please, order categories according to your preferences {%else%}Por favor, ordene as categorias de acordo com suas preferências com números de 1 a 4 {%endif%}</h3>
+  <h3> {%if en_view_bool %} Please, order categories according to your preferences {%else%}Por favor, dê notas de 1 a 5 para as seguintes categorias de vídeos, ordenando de acordo com suas preferências: {%endif%}</h3>
 
   <form method="POST" class="form-horizontal">{% csrf_token %}
     <fieldset>

@@ -87,14 +87,16 @@ class StressFeedback(models.Model):
 
 class Categories(models.Model):
     comedia = models.IntegerField(validators=[MinValueValidator(1),
-                                       MaxValueValidator(4)])
+                                       MaxValueValidator(5)], default=-1)
     esporte = models.IntegerField(validators=[MinValueValidator(1),
-                                       MaxValueValidator(4)])
+                                       MaxValueValidator(5)], default=-1)
     documentario = models.IntegerField(validators=[MinValueValidator(1),
-                                       MaxValueValidator(4)])
+                                       MaxValueValidator(5)], default=-1)
     musica = models.IntegerField(validators=[MinValueValidator(1),
-                                       MaxValueValidator(4)])
+                                       MaxValueValidator(5)], default=-1)
 
+    animais = models.IntegerField(validators=[MinValueValidator(1),
+                                       MaxValueValidator(5)], default=-1)
     english = models.NullBooleanField(default=False)
 
     session_id = models.CharField (

@@ -127,34 +127,38 @@ class CategoriesForm(forms.ModelForm):
 
     class Meta:
         model = Categories
-        fields = ('esporte', 'comedia', 'musica', 'documentario')
+        fields = ('esporte', 'comedia', 'musica', 'documentario', 'animais')
         labels = {
             'esporte': _("Esportes:"),
             'comedia': _("Comédia: "),
             'musica': _("Música: "),
-            'documentario': _("Documentários: ")
+            'documentario': _("Documentários: "),
+            'animais': _("Animais: ")
         }
         widgets= {
-            'esporte': forms.NumberInput(attrs={'min': 1, 'max': 4}),
-            'comedia': forms.NumberInput(attrs={'min': 1, 'max': 4}),
-            'musica': forms.NumberInput(attrs={'min': 1, 'max': 4}),
-            'documentario': forms.NumberInput(attrs={'min': 1, 'max': 4}),
+            'esporte': forms.NumberInput(attrs={'min': 1, 'max': 5}),
+            'comedia': forms.NumberInput(attrs={'min': 1, 'max': 5}),
+            'musica': forms.NumberInput(attrs={'min': 1, 'max': 5}),
+            'documentario': forms.NumberInput(attrs={'min': 1, 'max': 5}),
+            'animais': forms.NumberInput(attrs={'min': 1, 'max': 5})
         }
 
 class CategoriesForm_en(forms.ModelForm):
 
     class Meta:
         model = Categories
-        fields = ('esporte', 'comedia', 'musica', 'documentario')
+        fields = ('esporte', 'comedia', 'musica', 'documentario', 'animais')
         labels = {
             'esporte': _("Sports:"),
             'comedia': _("Comedy: "),
             'musica': _("Music: "),
-            'documentario': _("Documentaries: ")
+            'documentario': _("Documentaries: "),
+            'animais': _("Animals: ")
         }
         widgets= {
-            'esporte': forms.NumberInput(attrs={'min': 1, 'max': 4}),
-            'comedia': forms.NumberInput(attrs={'min': 1, 'max': 4}),
-            'musica': forms.NumberInput(attrs={'min': 1, 'max': 4}),
-            'documentario': forms.NumberInput(attrs={'min': 1, 'max': 4}),
+            'esporte': forms.NumberInput(attrs={'min': 1, 'max': 5}),
+            'comedia': forms.NumberInput(attrs={'min': 1, 'max': 5}),
+            'musica': forms.NumberInput(attrs={'min': 1, 'max': 5}),
+            'documentario': forms.NumberInput(attrs={'min': 1, 'max': 5}),
+            'animais': forms.NumberInput(attrs={'min': 1, 'max': 5})
         }
