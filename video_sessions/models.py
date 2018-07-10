@@ -41,7 +41,7 @@ class Feedback(models.Model):
             blank=True, null=True)
 
     session_id = models.CharField (
-        'Chave sessão', max_length=40, default=""
+        'Chave sessão', max_length=40, default="", null = True
     )
 
     def publish(self):
@@ -75,7 +75,7 @@ class StressFeedback(models.Model):
             blank=True, null=True)
 
     session_id = models.CharField (
-        'Chave sessão', max_length=40, default=""
+        'Chave sessão', max_length=40, default="", null=True
     )
 
     def publish(self):
@@ -100,7 +100,7 @@ class Categories(models.Model):
     english = models.NullBooleanField(default=False)
 
     session_id = models.CharField (
-        'Chave sessão', max_length=40, default=""
+        'Chave sessão', max_length=40, default="", null = True
     )
 
     created_date = models.DateTimeField(
