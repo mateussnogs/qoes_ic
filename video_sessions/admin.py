@@ -6,7 +6,7 @@ from .models import Feedback, StressFeedback, Categories
 
 class FeedbackAdmin(admin.ModelAdmin):
 
-    list_display = ['num_sessao', 'num_video_preferido', 'incomodo', 'interesse1', 'interesse2', 'created_date', 'justificativa', 'email', 'session_id']
+    list_display = ['num_sessao', 'num_video_preferido', 'incomodo', 'interesse1', 'interesse2', 'created_date', 'justificativa', 'email', 'session_id', 'comment']
     search_fields = ['justificativa', 'num_sessao']
     list_filter = ['created_date']
 
