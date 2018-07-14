@@ -6,13 +6,13 @@ from .models import Feedback, StressFeedback, Categories
 
 class FeedbackAdmin(admin.ModelAdmin):
 
-    list_display = ['num_sessao', 'num_video_preferido', 'incomodo', 'interesse1', 'interesse2', 'created_date', 'justificativa', 'email']
+    list_display = ['num_sessao', 'num_video_preferido', 'incomodo', 'interesse1', 'interesse2', 'created_date', 'justificativa', 'email', 'session_id']
     search_fields = ['justificativa', 'num_sessao']
     list_filter = ['created_date']
 
 class StressFeedbackAdmin(admin.ModelAdmin):
 
-    list_display = ['num_sessao', 'estresse', 'justificativa', 'created_date', 'email']
+    list_display = ['num_sessao', 'estresse', 'justificativa', 'created_date', 'email', 'session_id']
     search_fields = ['justificativa', 'estresse']
     list_filter = ['created_date']
 
