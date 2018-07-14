@@ -41,7 +41,7 @@ class Feedback(models.Model):
             blank=True, null=True)
 
     session_id = models.CharField (
-        'Chave sessão', max_length=40, default="", null = True
+        'Chave sessão', max_length=40, default="", null = True, blank=True,
     )
 
     def publish(self):
@@ -75,7 +75,7 @@ class StressFeedback(models.Model):
             blank=True, null=True)
 
     session_id = models.CharField (
-        'Chave sessão', max_length=40, default="", null=True
+        'Chave sessão', max_length=40, default="", null=True, blank=True,
     )
 
     def publish(self):
