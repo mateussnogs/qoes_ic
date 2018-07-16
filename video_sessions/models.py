@@ -100,7 +100,7 @@ class Categories(models.Model):
     english = models.NullBooleanField(default=False)
 
     session_id = models.CharField (
-        'Chave sessão', max_length=40, default="", null = True
+        'Chave sessão', max_length=40, default="", null = True, blank=True,
     )
 
     created_date = models.DateTimeField(
