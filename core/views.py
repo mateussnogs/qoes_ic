@@ -11,9 +11,6 @@ def index(request):
 
     request.session.clear()
 
-    if not request.session.exists(request.session.session_key):
-        request.session.create()
-
     context = {
         'session_num_view' : str(8) # até 8 excluso, pq a oitava sessão é a última, e todos assistem
     }
@@ -24,6 +21,8 @@ def en_index(request):
     return render(request, 'en_index.html')
 
 def categories(request, english=''):
+    if not request.session.exists(request.session.session_key):
+        request.session.create()
     en = False
     if english == 'en':
         en = True
