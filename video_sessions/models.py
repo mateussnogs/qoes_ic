@@ -24,7 +24,7 @@ class Feedback(models.Model):
         (SECOND, 'Segundo/Second'),
         (NONE, 'Nenhum/None'),
     )
-    num_video_preferido = models.IntegerField(validators=[MinValueValidator(1),
+    num_video_preferido = models.IntegerField(validators=[MinValueValidator(0),
                                        MaxValueValidator(2)], choices=VIDEO_CHOICES)
 
     justificativa = models.TextField(default="")
