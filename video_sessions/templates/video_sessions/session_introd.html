@@ -16,13 +16,12 @@
       {% if en_view_bool == False %}
       <p> Dois jogos clássicos entre Brasil e Alemanha serão apresentados. Controle as emoções. </p>
       {% else %}
-      <p> Funny cats! How not to laugh? </p>
+      <p> Funny pets. Hope you enjoy it, and share with us which one did you prefer the most. </p>
       {% endif %}
 
 
     {% elif session_num_view == '2' %}
       <p> Dois vídeos de comédia. Um vídeo do canal Porta dos Fundos, e outro do Parafernalha. </p>
-      <p> É bom poder rir com vídeos de comédia, mas será que seria menos engraçado com algumas falhas de qualidade de vídeo? </p>
       <p> Apesar de algumas curtas interrupções em um dos vídeos, esperamos que você se divirta e contribua com sua resposta! </p>
 
     {% comment suspensao da sessao %}{%elif session_num_view == '3' %}
@@ -35,43 +34,48 @@
       {%if en_view_bool %}
       <p> Funny pandas or relaxing fish? Are you sure? Play and findout </p>
       {%else%}
-      <p> Pandas costumam ser mais divertidos que peixes. E se o vídeo de peixes tivesse melhor qualidade, ainda seria mais legal ver pandas? </p>
-      <p> Assista e descubra! É rápido e sua resposta é importante! </p>
+      <p> A seguir, um vídeo divertido com pandas, e outro relaxante com peixes. </p>
       {%endif%}
 
 
     {%elif session_num_view == '4' %}
       {%if en_view_bool %}
-        <p>Comparing sports, the more radical the better? Press play and check it out!</p>
+        <p>Next, two extreme radical sports videos.</p>
       {% else %}
-      <p> Comparando esportes radicais, quanto mais radical melhor? </p>
-      <p> Confira dando play! </p>
+      <p> A seguir, dois vídeos de esportes radicais. </p>
       {%endif%}
 
     {%elif session_num_view == '5' %}
-      <h4> O mundo animal pode ser fascinante, não é mesmo? Vemos um comportamento mais interessante que o outro. </h4>
-      <h4> Dentre os 2 vídeos a seguir, o seu interesse deve ser maior por um deles.</h4>
-      <h4> Mas e as falhas de qualidade, fariam você preferir um vídeo que te interessa menos? </h4>
+      <p> O mundo animal pode ser fascinante. </p>
+      <p> Mostraremos dois curtos vídeos a seguir.</p>
+      <p> Qual deles desperta maior interesse? </p>
+      <p> E considerando as falhas de qualidade, qual deles você prefiriria? </p>
+
 
     {%elif session_num_view == '6' %}
-      <h4> A seguir, vídeos científicos bem curtos. Qual o mais interessante? E qual foi o preferido considerando as falhas?</h4>
-      <h4> Compartilhe sua resposta após os vídeos! </h4>
+      <p> A seguir, vídeos científicos bem curtos. Qual o mais interessante? E qual foi o preferido considerando as falhas?</p>
+      <p> Compartilhe sua resposta após os vídeos! </p>
 
       {%elif session_num_view == '7' %}
         {%if en_view_bool %}
-        <h3>Press play and enjoy some seconds of classical music. Maybe more in one than the other.</h3>
+        <p>Press play and enjoy some seconds of classical music. </p>
         {% else %}
-        <h3> Aperte play e aproveite alguns segundos de música clássica! Talvez um pouco mais em um dos vídeos...</h3>
+        <p> Aperte play e aproveite alguns segundos de música clássica! </p>
         {% endif %}
 
     {%elif session_num_view == '8' %}
       {%if en_view_bool %}
-      <h3>Usain Bolt breaking the world record of 100m. Always exciting! Wait...</h3>
+      <p> Next, Usain Bolt breaking the world record of 100m. </p>
+      <p> We want to estimate your sensibility with playback events such as rebufferings. </p>
+      <p> Some people don't bother too much with these playback events. Others get really stressed. </p>
+      <p> How much do you get stressed? </p>
+      <p> Press play and tell us. It will be fast! <p>
       {% else %}
-      <h3> Usain Bolt quebrando o recorde mundial dos 100m em duas versões. Queremos estimar sua sensibilidade numericamente quanto a falhas de qualidade que um vídeo pode apresentar. </h3>
-      <h3> Algumas pessoas tem mais, e outras não se importam tanto se a qualidade de transmissão de um vídeo não estiver tão boa.</h3>
-      <h3> Qual o seu perfil? Assista os próximos curtos vídeos e conta pra gente! </h3>
-      <h3> Vai ser rápido. Corre e aperta o play. <h3>
+      <p> A seguir, Usain Bolt quebrando o recorde mundial dos 100m em duas versões. </p>
+      <p> Queremos estimar a sua sensibilidade, numericamente, quanto a falhas de qualidade que um vídeo pode apresentar. </p>
+      <p> Algumas pessoas são mais sensíveis, e outras não se importam tanto se a qualidade de transmissão de um vídeo não estiver tão boa. </p>
+      <p> Qual o seu perfil? Assista os próximos curtos vídeos e conta pra gente. </p>
+      <p> Vai ser rápido. Corre e aperta o play. <p>
       {% endif %}
 
 

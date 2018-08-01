@@ -58,8 +58,8 @@ class StressForm(forms.ModelForm):
         model = StressFeedback
         fields = ('estresse', 'email')
         labels = {
-            'estresse': _("Em uma escala de 1 a 10, qual foi o seu estresse com as falhas de qualidade do primeiro vídeo?"),
-            'email': _("Seu e-mail(opcional): "),
+            'estresse': _("Em uma escala de 0 a 10, qual foi o seu estresse com as falhas de qualidade do primeiro vídeo?"),
+            'email': _("E-mail(opcional): "),
         }
         widgets = {
             'estresse':forms.NumberInput(attrs={'min': 0, 'max': 10}),
@@ -111,7 +111,7 @@ class StressForm_en(forms.ModelForm):
         fields = ('estresse', 'email')
         labels = {
             'estresse': _("In a scale from 0 to 10, what was your stress level while watching the first movie, with breaks?"),
-            'email': _("Your email(optional): "),
+            'email': _("Email(optional): "),
         }
         widgets = {
             'estresse':forms.NumberInput(attrs={'min': 0, 'max': 10}),
