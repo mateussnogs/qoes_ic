@@ -202,7 +202,7 @@ def get_video_path(session_num, video_num):
         if video_num == '1':
             video_path = "pandas_sliced_rebuffs.mp4"
         elif video_num == '2':
-            video_path = "zen_music_diving_sea_sliced.mp4"
+            video_path = "koalas.mp4"
 
     elif session_num == '4':
         if video_num == '1':
