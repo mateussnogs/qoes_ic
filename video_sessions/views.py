@@ -114,7 +114,7 @@ def feedback(request, session_num, english=''):
                 feed.save()
 
                 if len(request.session['already_watched']) >= 4: # se o usuário já assistiu 4 sessoes, termina experimento!
-                    next_session = str(666)
+                    next_session = str(999)
                     session_announced = 1
 
                 else:
