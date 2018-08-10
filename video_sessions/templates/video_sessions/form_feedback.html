@@ -24,7 +24,7 @@
       <div class="form-group">
         <label for="{{field.auto_id}}" class="col-md-3 control-label">{{ field.label }}</label>
         <div class="col-md-9">
-            {% if field.auto_id == 'id_incomodo' or field.auto_id == 'id_interesse1' or field.auto_id == 'id_interesse2' %}
+            {% if field.auto_id == 'id_incomodo' or field.auto_id == 'id_interesse1' or field.auto_id == 'id_interesse2' or field.auto_id == 'id_estresse' %}
             {% render_field field %}
             {% else %}
             {% render_field field class='form-control' %}

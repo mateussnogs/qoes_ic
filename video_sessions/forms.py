@@ -12,6 +12,20 @@ STARS = (
     ('5', 5),
 )
 
+STARS_STRESS = (
+    ('0', 0),
+    ('1', 1),
+    ('2', 2),
+    ('3', 3),
+    ('4', 4),
+    ('5', 5),
+    ('6', 6),
+    ('7', 7),
+    ('8', 8),
+    ('9', 9),
+    ('10', 10),
+)
+
 
 class HorizontalRadioSelect(forms.RadioSelect):
     template_name = 'video_sessions/horizontal_select.html'
@@ -62,7 +76,8 @@ class StressForm(forms.ModelForm):
             'email': _("E-mail(opcional): "),
         }
         widgets = {
-            'estresse':forms.NumberInput(attrs={'min': 0, 'max': 10}),
+            'estresse': HorizontalRadioSelect(choices=STARS_STRESS),
+            #'estresse':forms.NumberInput(attrs={'min': 0, 'max': 10}),
         }
 
     def __init__(self, *args, **kwargs):
@@ -114,7 +129,8 @@ class StressForm_en(forms.ModelForm):
             'email': _("Email(optional): "),
         }
         widgets = {
-            'estresse':forms.NumberInput(attrs={'min': 0, 'max': 10}),
+            'estresse': HorizontalRadioSelect(choices=STARS_STRESS),
+            #'estresse':forms.NumberInput(attrs={'min': 0, 'max': 10}),
         }
 
     def __init__(self, *args, **kwargs):
@@ -136,11 +152,11 @@ class CategoriesForm(forms.ModelForm):
             'animais': _("Animais: ")
         }
         widgets= {
-            'esporte': forms.NumberInput(attrs={'min': 1, 'max': 5}),
-            'comedia': forms.NumberInput(attrs={'min': 1, 'max': 5}),
-            'musica': forms.NumberInput(attrs={'min': 1, 'max': 5}),
-            'documentario': forms.NumberInput(attrs={'min': 1, 'max': 5}),
-            'animais': forms.NumberInput(attrs={'min': 1, 'max': 5})
+            'esporte': HorizontalRadioSelect(choices=STARS[1:]),
+            'comedia': HorizontalRadioSelect(choices=STARS[1:]),
+            'musica': HorizontalRadioSelect(choices=STARS[1:]),
+            'documentario': HorizontalRadioSelect(choices=STARS[1:]),
+            'animais': HorizontalRadioSelect(choices=STARS[1:]),
         }
 
 class CategoriesForm_en(forms.ModelForm):
@@ -156,9 +172,9 @@ class CategoriesForm_en(forms.ModelForm):
             'animais': _("Animals: ")
         }
         widgets= {
-            'esporte': forms.NumberInput(attrs={'min': 1, 'max': 5}),
-            'comedia': forms.NumberInput(attrs={'min': 1, 'max': 5}),
-            'musica': forms.NumberInput(attrs={'min': 1, 'max': 5}),
-            'documentario': forms.NumberInput(attrs={'min': 1, 'max': 5}),
-            'animais': forms.NumberInput(attrs={'min': 1, 'max': 5})
+            'esporte': HorizontalRadioSelect(choices=STARS[1:]),
+            'comedia': HorizontalRadioSelect(choices=STARS[1:]),
+            'musica': HorizontalRadioSelect(choices=STARS[1:]),
+            'documentario': HorizontalRadioSelect(choices=STARS[1:]),
+            'animais': HorizontalRadioSelect(choices=STARS[1:]),
         }
