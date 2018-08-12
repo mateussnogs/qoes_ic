@@ -235,3 +235,8 @@ def get_video_path(session_num, video_num):
             video_path = "usain_sliced_hd.mp4"
 
     return video_path
+
+
+
+def youtube_test(request):
+    return render(request, 'video_sessions/youtube_test.html')

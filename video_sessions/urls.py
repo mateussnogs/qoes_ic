@@ -10,4 +10,6 @@ urlpatterns = [
     re_path(r'^(?P<english>\w*)/?feedback/session(?P<session_num>\d+)/$', views.feedback, name='feedback'),
     re_path(r'^(?P<english>\w*)/?introducao/session(?P<session_num>\d+)/$', views.session_introd, name="session_introd"),
 
+    path('youtube/', views.youtube_test, name="youtube_test"),
+
 ]
