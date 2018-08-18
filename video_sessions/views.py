@@ -206,7 +206,7 @@ def get_video_path(session_num, video_num):
 
     elif session_num == '4':
         if video_num == '1':
-            video_path = "radicais_ytb.mp4"
+            video_path = "radicais_composto_rebuffs.mp4"
         elif video_num == '2':
             video_path = "slack_sliced.mp4"
 
