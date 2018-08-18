@@ -178,7 +178,7 @@ def get_video_path_en(session_num, video_num):
     video_path = None
     if session_num == '1':
         if video_num == '1':
-            video_path = "funny_cats.mp4"
+            video_path = "funny_cats_ytb.mp4"
         elif video_num == '2':
             video_path = "smart_dogs.mp4"
     else:
@@ -192,7 +192,7 @@ def get_video_path(session_num, video_num):
         if video_num == '1':
             video_path = "brasil_perde_alemanha_sliced.mp4"
         elif video_num == '2':
-            video_path = "brasil_ganha_alemanha_sliced_rebuffs.mp4"
+            video_path = "brasil_ganha_ytb.mp4"
     elif session_num == '2':
         if video_num == '1':
             video_path = "sotaques.mp4"
@@ -200,7 +200,7 @@ def get_video_path(session_num, video_num):
             video_path = "poser.mp4"
     elif session_num == '3':
         if video_num == '1':
-            video_path = "pandas_sliced_rebuffs.mp4"
+            video_path = "pandas_ytb.mp4"
         elif video_num == '2':
             video_path = "zen_music_diving_sea_sliced.mp4"
 
@@ -214,11 +214,11 @@ def get_video_path(session_num, video_num):
         if video_num == '1':
             video_path = "formigas.mp4"
         elif video_num == '2':
-            video_path = "onca_composto_rebuffs.mp4"
+            video_path = "onca_ytb.mp4"
 
     elif session_num == '6':
         if video_num == '1':
-            video_path = "buracos_negros_rebuffs.mp4"
+            video_path = "buracos_negros_ytb.mp4"
         elif video_num == '2':
             video_path = "sistema_solar_telecurso_sliced.mp4"
 
