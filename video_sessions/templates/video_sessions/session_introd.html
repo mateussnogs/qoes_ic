@@ -11,7 +11,7 @@
 <body>
 
 <div class="container">
-  <div class="jumbotron">
+  <div class="jumbotron text-center">
     {% if session_num_view == '1' %}
       {% if en_view_bool == False %}
       <p> Dois jogos clássicos entre Brasil e Alemanha serão apresentados. Controle as emoções. </p>
@@ -34,7 +34,7 @@
       {%if en_view_bool %}
       <p> Funny pandas or coalas? Are you sure? Play and findout </p>
       {%else%}
-      <p> A seguir, um vídeo com panda, e outro com coalas. Divirta-se! </p>
+      <p> A seguir, um vídeo com panda, e outro com peixes.</p>
       {%endif%}
 
 
@@ -81,8 +81,8 @@
 
     {% endif %}
   </div>
-  <div class='container'>
-    <h1><a href="{% url 'video_sessions:video_sessions' session_num=session_num_view video_num=1 session_announced=1 english=english_str%}" class="btn btn-primary btn-lg">Play</a></h1>
+  <div class='container text-center'>
+    <h1><a href="{% url 'video_sessions:video_sessions' session_num=session_num_view video_num=1 session_announced=1 english=english_str%}" class="btn btn-primary btn-lg btn btn-success">Play</a></h1>
   </div>
 </div>
 

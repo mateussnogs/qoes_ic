@@ -15,6 +15,10 @@ video {
     height: 70%;
 }
 
+div.txt_size {
+    font-size: 10px;
+}
+
 #loader {
   position: absolute;
   left: 50%;
