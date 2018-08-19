@@ -18,7 +18,7 @@
 
   <h3 class="text-center">{%if english %} Session Feedback {%else%}Feedback da sessão{%endif%}</h3>
   <br></br>
-
+<h5>
   <form method="POST" class="form-horizontal">{% csrf_token %}
     <fieldset>
       {% for field in form %}
@@ -43,6 +43,7 @@
 
     </fieldset>
   </form>
+</h5>
 
 </div>
 
