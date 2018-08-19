@@ -195,7 +195,7 @@ def get_video_path(session_num, video_num):
             video_path = "brasil_ganha_ytb.mp4"
     elif session_num == '2':
         if video_num == '1':
-            video_path = "sotaques.mp4"
+            video_path = "sotaques_ytb.mp4"
         elif video_num == '2':
             video_path = "poser.mp4"
     elif session_num == '3':
@@ -224,13 +224,13 @@ def get_video_path(session_num, video_num):
 
     elif session_num == '7':
         if video_num == '1':
-            video_path = "vivaldi_bad_qos.mp4"
+            video_path = "vivaldi_ytb.mp4"
         elif video_num == '2':
             video_path = "Vivaldi_g_qos.mp4"
 
     elif session_num == '8':
         if video_num == '1':
-            video_path = "usain_disturbed.mp4"
+            video_path = "usain_ytb.mp4"
         elif video_num == '2':
             video_path = "usain_sliced_hd.mp4"
 
