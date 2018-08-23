@@ -2,6 +2,7 @@ from django import forms
 from django.utils.translation import gettext_lazy as _
 from .models import Feedback, StressFeedback, Categories
 from django.utils.safestring import mark_safe
+from django.forms.widgets import SelectMultiple, Select
 
 STARS = (
     ('0', 0),
@@ -30,11 +31,9 @@ STARS_STRESS = (
 class HorizontalRadioSelect(forms.RadioSelect):
     template_name = 'video_sessions/horizontal_select.html'
 
-str_comentario_label = "Comentários sobre a sessão(Opcional). As falhas de qualidade foram muito perceptíveis? \
-O tempo dos vídeos foi muito curto para julgá-los? Houve entretenimento durante a sessão?"
+str_comentario_label = "Comentários sobre a sessão(Opcional). Houve entretenimento durante a sessão?"
 
-str_comentario_label_en="Comments about the session (optional): the streaming failures were very visible? \
-  The duration of the movies was too short to assess their quality? Was there entertainment during the sessions?"
+str_comentario_label_en="Comments about the session (optional): Was there entertainment during the sessions?"
 
 class FeedbackForm(forms.ModelForm):
 
@@ -51,10 +50,10 @@ class FeedbackForm(forms.ModelForm):
             'email': _(""),
         }
         widgets = {
-          'comment': forms.Textarea(attrs={'rows':2, 'cols':15}),
+          'comment': forms.Textarea(attrs={'rows':1, 'cols':15}),
           'justificativa': forms.Textarea(attrs={'rows':1, 'cols':15}),
           'incomodo': HorizontalRadioSelect(choices=STARS),
-          'interesse1': HorizontalRadioSelect(choices=STARS),
+          'interesse1': HorizontalRadioSelect(choices=STARS, attrs={'size':25}),
           'interesse2': HorizontalRadioSelect(choices=STARS),
         }
 
@@ -152,11 +151,12 @@ class CategoriesForm(forms.ModelForm):
             'animais': _("Animais: ")
         }
         widgets= {
-            'esporte': HorizontalRadioSelect(choices=STARS[1:]),
-            'comedia': HorizontalRadioSelect(choices=STARS[1:]),
-            'musica': HorizontalRadioSelect(choices=STARS[1:]),
-            'documentario': HorizontalRadioSelect(choices=STARS[1:]),
-            'animais': HorizontalRadioSelect(choices=STARS[1:]),
+            'esporte': Select(choices=STARS[1:]),
+            'comedia': Select(choices=STARS[1:]),
+            'musica': Select(choices=STARS[1:]),
+            'documentario': Select(choices=STARS[1:]),
+            'animais': Select(choices=STARS[1:]),
+
         }
 
 class CategoriesForm_en(forms.ModelForm):
@@ -172,9 +172,9 @@ class CategoriesForm_en(forms.ModelForm):
             'animais': _("Animals: ")
         }
         widgets= {
-            'esporte': HorizontalRadioSelect(choices=STARS[1:]),
-            'comedia': HorizontalRadioSelect(choices=STARS[1:]),
-            'musica': HorizontalRadioSelect(choices=STARS[1:]),
-            'documentario': HorizontalRadioSelect(choices=STARS[1:]),
-            'animais': HorizontalRadioSelect(choices=STARS[1:]),
+            'esporte': Select(choices=STARS[1:]),
+            'comedia': Select(choices=STARS[1:]),
+            'musica': Select(choices=STARS[1:]),
+            'documentario': Select(choices=STARS[1:]),
+            'animais': Select(choices=STARS[1:]),
         }
