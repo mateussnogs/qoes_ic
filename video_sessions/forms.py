@@ -31,9 +31,9 @@ STARS_STRESS = (
 class HorizontalRadioSelect(forms.RadioSelect):
     template_name = 'video_sessions/horizontal_select.html'
 
-str_comentario_label = "Comentários sobre a sessão(Opcional). Houve entretenimento durante a sessão?"
+str_comentario_label = "Comentários sobre a sessão(Opcional). Houve entretenimento durante a sessão? Algum outro comentário?"
 
-str_comentario_label_en="Comments about the session (optional): Was there entertainment during the sessions?"
+str_comentario_label_en="Comments about the session (optional): Was there entertainment during the session? Any other comment?"
 
 class FeedbackForm(forms.ModelForm):
 
