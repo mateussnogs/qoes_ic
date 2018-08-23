@@ -16,22 +16,15 @@ class Feedback(models.Model):
                                        MaxValueValidator(10)])
     num_sessao = models.IntegerField(validators=[MinValueValidator(1),
                                        MaxValueValidator(10)])
-    FIRST = 1
-    SECOND = 2
-    NONE = 0
-    VIDEO_CHOICES = (
-        (FIRST, 'Primeiro/First'),
-        (SECOND, 'Segundo/Second'),
-        (NONE, 'Nenhum/None'),
-    )
+
     num_video_preferido = models.IntegerField(validators=[MinValueValidator(0),
-                                       MaxValueValidator(2)], choices=VIDEO_CHOICES)
+                                       MaxValueValidator(2)])
 
     justificativa = models.TextField(default="")
 
     comment = models.TextField(default="")
 
-    email = models.CharField(max_length=40, default="")
+    email = models.CharField(max_length=40, default="", blank=True, null=True)
 
     english = models.NullBooleanField(default=False)
 
@@ -65,7 +58,7 @@ class StressFeedback(models.Model):
 
     recommend_feedback = models.TextField(default='', blank=True, null=True)
 
-    email = models.CharField(max_length=40, default="")
+    email = models.CharField(max_length=40, default="", blank=True, null=True)
 
     english = models.NullBooleanField(default=False)
 
@@ -97,6 +90,9 @@ class Categories(models.Model):
 
     animais = models.IntegerField(validators=[MinValueValidator(1),
                                        MaxValueValidator(5)], null = True)
+
+    email = models.CharField(max_length=40, default="", blank=True, null=True)
+
     english = models.NullBooleanField(default=False)
 
     session_id = models.CharField (

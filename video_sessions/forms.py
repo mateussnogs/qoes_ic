@@ -27,6 +27,22 @@ STARS_STRESS = (
     ('10', 10),
 )
 
+FIRST = 1
+SECOND = 2
+NONE = 0
+ESCOLHAS_VIDEO = (
+    (FIRST, 'Primeiro'),
+    (SECOND, 'Segundo'),
+    (NONE, 'Nenhum'),
+    ("", "")
+)
+VIDEO_CHOICES = (
+    (FIRST, 'First'),
+    (SECOND, 'Second'),
+    (NONE, 'None'),
+    ("", ""),
+)
+
 
 class HorizontalRadioSelect(forms.RadioSelect):
     template_name = 'video_sessions/horizontal_select.html'
@@ -50,6 +66,7 @@ class FeedbackForm(forms.ModelForm):
             'email': _(""),
         }
         widgets = {
+          'num_video_preferido': Select(choices=ESCOLHAS_VIDEO),
           'comment': forms.Textarea(attrs={'rows':1, 'cols':15}),
           'justificativa': forms.Textarea(attrs={'rows':1, 'cols':15}),
           'incomodo': HorizontalRadioSelect(choices=STARS),
@@ -72,7 +89,7 @@ class StressForm(forms.ModelForm):
         fields = ('estresse', 'email')
         labels = {
             'estresse': _("Em uma escala de 0 a 10, qual foi o seu estresse com as falhas de qualidade do primeiro vídeo?"),
-            'email': _("E-mail(opcional): "),
+            'email': _(""),
         }
         widgets = {
             'estresse': HorizontalRadioSelect(choices=STARS_STRESS),
@@ -82,6 +99,7 @@ class StressForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super(StressForm, self).__init__(*args, **kwargs)
         self.fields['email'].required = False
+        self.fields['email'].widget = forms.HiddenInput()
 
 
 
@@ -103,6 +121,7 @@ class FeedbackForm_en(forms.ModelForm):
             'email': _(""),
         }
         widgets = {
+          'num_video_preferido': Select(choices=VIDEO_CHOICES),
           'comment': forms.Textarea(attrs={'rows':2, 'cols':15}),
           'justificativa': forms.Textarea(attrs={'rows':1, 'cols':15}),
           'incomodo': HorizontalRadioSelect(choices=STARS),
@@ -125,7 +144,7 @@ class StressForm_en(forms.ModelForm):
         fields = ('estresse', 'email')
         labels = {
             'estresse': _("In a scale from 0 to 10, what was your stress level while watching the first movie, with breaks?"),
-            'email': _("Email(optional): "),
+            'email': _(""),
         }
         widgets = {
             'estresse': HorizontalRadioSelect(choices=STARS_STRESS),
@@ -135,6 +154,7 @@ class StressForm_en(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super(StressForm_en, self).__init__(*args, **kwargs)
         self.fields['email'].required = False
+        self.fields['email'].widget = forms.HiddenInput()
 
 
 
@@ -142,13 +162,14 @@ class CategoriesForm(forms.ModelForm):
 
     class Meta:
         model = Categories
-        fields = ('esporte', 'comedia', 'musica', 'documentario', 'animais')
+        fields = ('esporte', 'comedia', 'musica', 'documentario', 'animais', 'email')
         labels = {
             'esporte': _("Esportes:"),
             'comedia': _("Comédia: "),
             'musica': _("Música: "),
             'documentario': _("Documentários: "),
-            'animais': _("Animais: ")
+            'animais': _("Animais: "),
+            'email': _("Email(opcional): "),
         }
         widgets= {
             'esporte': Select(choices=STARS[1:]),
@@ -158,18 +179,22 @@ class CategoriesForm(forms.ModelForm):
             'animais': Select(choices=STARS[1:]),
 
         }
+        def __init__(self, *args, **kwargs):
+            super(CategoriesForm, self).__init__(*args, **kwargs)
+            self.fields['email'].required = False
 
 class CategoriesForm_en(forms.ModelForm):
 
     class Meta:
         model = Categories
-        fields = ('esporte', 'comedia', 'musica', 'documentario', 'animais')
+        fields = ('esporte', 'comedia', 'musica', 'documentario', 'animais', 'email')
         labels = {
             'esporte': _("Sports:"),
             'comedia': _("Comedy: "),
             'musica': _("Music: "),
             'documentario': _("Documentaries: "),
-            'animais': _("Animals: ")
+            'animais': _("Animals: "),
+            'email': _("Email(optional): "),
         }
         widgets= {
             'esporte': Select(choices=STARS[1:]),
@@ -178,3 +203,6 @@ class CategoriesForm_en(forms.ModelForm):
             'documentario': Select(choices=STARS[1:]),
             'animais': Select(choices=STARS[1:]),
         }
+        def __init__(self, *args, **kwargs):
+            super(CategoriesForm, self).__init__(*args, **kwargs)
+            self.fields['email'].required = False

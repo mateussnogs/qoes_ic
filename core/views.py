@@ -38,6 +38,8 @@ def categories(request, english=''):
             feed.esporte = form.cleaned_data.get('esporte')
             feed.documentario = form.cleaned_data.get('documentario')
             feed.musica = form.cleaned_data.get('musica')
+            feed.email = form.cleaned_data.get('email')
+            request.session['email'] = feed.email
             if en:
                 feed.english = True
             feed.session_id = request.session.session_key

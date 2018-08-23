@@ -15,7 +15,7 @@ class StressFeedbackAdmin(admin.ModelAdmin):
     list_filter = ['created_date']
 
 class CategoriesAdmin(admin.ModelAdmin):
-    list_display = ['comedia', 'esporte', 'documentario', 'musica', 'english', 'session_id', 'created_date']
+    list_display = ['comedia', 'esporte', 'documentario', 'musica', 'email', 'english', 'session_id', 'created_date']
 
 admin.site.register(Feedback, FeedbackAdmin)
 admin.site.register(StressFeedback, StressFeedbackAdmin)
