@@ -7,4 +7,4 @@ db.sqlite3
 .DS_Store
 qose_ic/local_settings.py
 qose_ic/settings.py
-video_session/migrations
+
