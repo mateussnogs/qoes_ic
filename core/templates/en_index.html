@@ -12,9 +12,9 @@
 
 <div class="container">
   <div class="jumbotron">
-    <h1>Experimental video analysis</h1>
+    <h3>Experiment about Quality of Servie(QoS), Quality of Experience(QoE) and recommendations</h3>
     <p>Welcome to our brief experiment on quality-of-experience.</p>
-    <p> In this experiment, you will watch movie session, and after each session, comprising a pair of movies, you will be asked to assess which movie of the pair you preferred the most.</p>
+    <p> In this experiment, you will watch movie sessions, and after each session, comprising a pair of movies, you will be asked to assess which movie of the pair you preferred the most.</p>
     <p>Some disturbances may occur in the middle of the streaming of some movies. They were inserted on purpose.</p>
     <p> The experiment will take around 5 minutes.</p>
     <p>The experiment works on Mozilla Firefox and Google Chrome, but NOT on Safari.</p>
@@ -22,7 +22,7 @@
   </div>
   <div class='container'>
       <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-10 text-center">
           {%comment%}<h1><a href="{% url 'video_sessions:video_sessions' session_num=8 video_num=1 session_announced=0 english='en' %}" class="btn btn-primary btn-lg">Start experiment</a></h1>{%endcomment%}
           <h1><a href="{% url 'core:en_categories' english='en'%}" class="btn btn-primary btn-lg btn btn-primary btn btn-success">Start experiment</a></h1>
         </div>
